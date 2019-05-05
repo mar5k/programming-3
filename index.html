@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <meta charset="utf8">
+    <script src="class.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <style>
+        #legend {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1200px;
+            margin-top:970px;
+            margin-right: 900px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 30px;
+        }
+
+        td {
+            border: 1px solid black;
+            font-size: 14px;
+            padding-left: 50px;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="ddrr">
+        <table id="legend">
+            <tr>
+                <td class="legend-color">Գույն</td>
+                <td>Անվանում</td>
+                <td>Շարժվում է</td>
+                <td>Ուտում է</td>
+                <td>Բազմանում է</td>
+                <td>Սատկում է</td>
+            </tr>
+
+            <tr>
+                <td class="legend-color" style="background-color:gray"></td>
+                <td>Դատարկ վանդակներ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td class="legend-color" style="background-color:green"></td>
+                <td>Խոտ</td>
+                <td></td>
+                <td></td>
+                <td>Մոտակա 8 վանդակներում, 5 տակտը մեկ</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td class="legend-color" style="background-color:yellow"></td>
+                <td>Խոտակեր</td>
+                <td>Մոտակա 8 վանդակներում, էներգիան քչանում է 1֊ով</td>
+                <td>Խոտերին, մոտակա 8 վանդակներում, ուտելիս էներգիան ավելանում է 1֊ով, բազմացման գործակիցը ավելանում է 1֊ով</td>
+                <td>Բազմանում է մոտակա տարածքներում, երբ բազմացման գործակիցը 9֊ից ավել է</td>
+                <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+            </tr>
+
+            <tr>
+                <td class="legend-color" style="background-color:red"></td>
+                <td>Գիշատիչ</td>
+                <td>Մոտակա 8 դատարկ վանդակներում, էներգիան քչանում է 2֊ով</td>
+                <td>Խոտակերներին, մոտակա 8 վանդակներում, ուտելիս էներգիան ավելանում է 1֊ով, բազմացման գործակիցը ավելանում է 1֊ով</td>
+                <td>Բազմանում է մոտակա տարածքներում, երբ բազմացման գործակիցը 5֊ից ավել է</td>
+                <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+            </tr>
+
+            <tr>
+                <td class="legend-color" style="background-color:purple"></td>
+                <td>Որսորդ</td>
+                <td>Մոտակա 24 դատարկ վանդակներով և մոտակա 8 խոտերի վրայով</td>
+                <td>Խոտակերներին և գիշատիչներին, մոտակա 24 վանդակներում</td>
+                <td>Բազմանում է մոտակա տարածքներում, երբ բազմացման գործակիցը 47֊ից ավել է</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="legend-color" style="background-color:blue"></td>
+                <td>Ոստիկան</td>
+                <td>Մոտակա 24 դատարկ վանդակներով, խոտերի, գիշատիչների և խոտակերների վրայով</td>
+                <td>Որսորդներին, մոտակա 24 վանդակներում, ուտելուց հետո դառնում է խոտ, որպեսզի խաղը շարունակվի</td>
+                <td></td>
+                <td>Սատկում է (ինքնասպանություն), երբ ուտում է որսորդ</td>
+            </tr>
+            <tr>
+                <td class="legend-color" style="background-color:black"></td>
+                <td>Կրծող</td>
+                <td>Մոտակա 4 անկյունագծերի դատարկ վանդակների վրայով, էներգիան քչանում է 3֊ով</td>
+                <td>Ուտում է ամեն ինչ, ուտելիս էներգիան ավելանում է 1֊ով</td>
+                <td></td>
+                <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>
