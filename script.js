@@ -13,7 +13,7 @@ let eatGrassCount = 181;
 let gayleriqanak = 51;
 let vq = 6;
 let mil = 4;
-let pnduk = 2;
+let pnduk = 1;
 
 for (let i = 0; i < bardzrutyun; i++) {
     matrix.push([]);
