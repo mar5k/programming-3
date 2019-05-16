@@ -1,4 +1,3 @@
-let side = 25;
 let matrix = [];
 let xotArr = [];
 let eatArr = [];
@@ -7,6 +6,7 @@ let xumb = [];
 let legal = [];
 let burundukner = [];
 let bardzrutyun = 38;
+let side = 25;
 let layn = 80;
 let grassCount = 327;
 let eatGrassCount = 181;

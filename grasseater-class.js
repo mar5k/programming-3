@@ -1,4 +1,6 @@
-class Eatgrass extends LivingCreature{
+var LivingCreature = require("./mclass.js")
+
+module.exports =class Eatgrass extends LivingCreature{
     constructor(x,y) {
         super(x,y);
         this.energy = 5;

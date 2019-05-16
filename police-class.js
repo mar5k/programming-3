@@ -1,4 +1,6 @@
-class Police extends LivingCreature{
+var LivingCreature = require("./mclass.js")
+
+module.exports =class Police extends LivingCreature{
 
     move() {
 

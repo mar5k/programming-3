@@ -1,4 +1,6 @@
-class Vorsord extends LivingCreature{
+var LivingCreature = require("./mclass.js")
+
+module.exports = class Vorsord extends LivingCreature{
     move() {    
 
         let fundCords = this.getDirections_1(0);
