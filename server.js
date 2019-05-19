@@ -129,52 +129,154 @@ function objmaker() {
 }
 objmaker();
 //Events 
-io.on("connection",function(socket){
-    socket.on("pushkrcox", function(){
+io.on("connection", function (socket) {
+    socket.on("pushkrcox", function () {
         var n = 0;
-        while(n < 2){
+        while (n < 2) {
             let x = Math.floor(random(layn));
             let y = Math.floor(random(bardzrutyun));
-            if(matrix[y][x] == 0){
+            if (matrix[y][x] == 0) {
                 matrix[y][x] = 6;
-                var krc = new Krcox(x,y);
+                var krc = new Krcox(x, y);
                 burundukner.push(krc);
                 n++;
-            }  
+            }
         }
     })
-    socket.on("killkrcox",function(){
+    socket.on("killkrcox", function () {
         burundukner = [];
-        for(var y = 0; y < bardzrutyun; y++){
-            for(var x = 0; x < layn; x++){
-                if(matrix[y][x] == 6)
+        for (var y = 0; y < bardzrutyun; y++) {
+            for (var x = 0; x < layn; x++) {
+                if (matrix[y][x] == 6)
                     matrix[y][x] = 0;
             }
         }
     })
-    socket.on("change",function(){
+    socket.on("change", function () {
         vohmak = [];
-        for(var y = 0; y < bardzrutyun; y++){
-            for(var x = 0; x < layn; x++){
-                if(matrix[y][x] == 3){
+        for (var y = 0; y < bardzrutyun; y++) {
+            for (var x = 0; x < layn; x++) {
+                if (matrix[y][x] == 3) {
                     matrix[y][x] = 5;
-                    var polo = new Police(x,y);
+                    var polo = new Police(x, y);
                     legal.push(polo);
                 }
             }
         }
     })
-    socket.on("addg", function(){
+    socket.on("addg", function () {
         var n = 0;
-        while(n < 13){
+        while (n < 13) {
             let x = Math.floor(random(layn));
             let y = Math.floor(random(bardzrutyun));
-            if(matrix[y][x] == 0){
+            if (matrix[y][x] == 0) {
                 matrix[y][x] = 3;
-                var g = new Gishatich(x,y);
-                vohmak.push(g);
+                var gish = new Gishatich(x, y);
+                vohmak.push(gish);
                 n++;
-            }  
+            }
+        }
+    })
+    socket.on("earth", function () {
+        for (var y = 0; y < bardzrutyun; y++) {
+            for (var x = 0; x < layn; x++) {
+                if (((y + x) % 2) == 0) {
+                    if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+                        if (matrix[y][x] == 1) {
+                            for (var i in xotArr) {
+                                if (x == xotArr[i].x && y == xotArr[i].y) {
+                                    xotArr.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if (matrix[y][x] == 2) {
+                            for (var i in eatArr) {
+                                if (x == eatArr[i].x && y == eatArr[i].y) {
+                                    eatArr.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if (matrix[y][x] == 3) {
+                            for (var i in vohmak) {
+                                if (x == vohmak[i].x && y == vohmak[i].y) {
+                                    vohmak.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if (matrix[y][x] == 4) {
+                            for (var i in xumb) {
+                                if (x == xumb[i].x && y == xumb[i].y) {
+                                    xumb.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if (matrix[y][x] == 5) {
+                            for (var i in legal) {
+                                if (x == legal[i].x && y == legal[i].y) {
+                                    legal.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
+                        else if (matrix[y][x] == 6) {
+                            for (var i in burundukner) {
+                                if (x == burundukner[i].x && y == burundukner[i].y) {
+                                    burundukner.splice(i, 1);
+                                    break;
+                                }
+                            }
+                        }
+                        matrix[y][x] = 7;
+                    }
+                }
+            }
+        }
+    })
+    socket.on("vo", function () {
+        var n = 0;
+        while (n < 5) {
+            let x = Math.floor(random(layn));
+            let y = Math.floor(random(bardzrutyun));
+            if (matrix[y][x] == 0 || matrix[y][x] == 1) {
+                matrix[y][x] = 4;
+                var nvors = new Vorsord(x, y);
+                xumb.push(nvors);
+                n++;
+            }
+        }
+    })
+    socket.on("gro", function () {
+        var n = 0;
+        while (n < 1) {
+            let x = Math.floor(random(layn));
+            let y = Math.floor(random(bardzrutyun));
+            if (matrix[y][x] == 0) {
+                matrix[y][x] = 1;
+                var newgr = new Grass(x, y);
+                xotArr.push(newgr);
+                n++;
+            }
+        }
+    })
+    socket.on("kill", function () {
+        for (var y = 0; y < bardzrutyun; y++) {
+            for (var x = 0; x < layn; x++) {
+                if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+                    if (matrix[y][x] == 2 && eatArr.length > 30) {
+                        for (var i in eatArr) {
+                            if (x == eatArr[i].x && y == eatArr[i].y) {
+                                eatArr.splice(i, 30);
+                                break;
+                            }
+                        }
+                    }
+                }
+                matrix[y][x] = 0;
+            }
         }
     })
 });

@@ -29,11 +29,13 @@ function drawMatrix(data) {
             } else if (matrix[i][j] == 3) {
                 fill("red");
             } else if (matrix[i][j] == 4) {
-                fill("purple");
+                fill("indigo");
             } else if (matrix[i][j] == 5) {
                 fill("blue");
             } else if (matrix[i][j] == 6) {
                 fill("black");
+            } else if (matrix[i][j] == 7) {
+                fill("brown");
             }
             rect(j * side, i * side, side, side);
         }
@@ -41,15 +43,27 @@ function drawMatrix(data) {
 }
 
 
-function PushKrcox(){
+function PushKrcox() {
     socket.emit("pushkrcox");
 }
-function KillKrcox(){
+function KillKrcox() {
     socket.emit("killkrcox");
 }
-function ChangeGishatich(){
+function ChangeGishatich() {
     socket.emit("change");
 }
-function AddGishatich(){
+function AddGishatich() {
     socket.emit("addg");
+}
+function Earth() {
+    socket.emit("earth");
+}
+function AddVorsord() {
+    socket.emit("vo");
+}
+function AddGrass() {
+    socket.emit("gro");
+}
+function KillEatGrass() {
+    socket.emit("kill");
 }

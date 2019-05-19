@@ -42,32 +42,65 @@
         }
 
         #krcoxsp {
-            color: black;
+            background-color: rgb(100, 95, 95);
         }
 
-        #vorsord {
+        #change {
             background-color: teal;
+        }
+
+        #earth {
+            background-color: rgb(165, 93, 26);
+        }
+
+        #gro {
+            background-color: green;
+        }
+
+        #vo {
+            background-color: indigo;
+        }
+
+        #addgish {
+            background-color: red;
+        }
+
+        #xotaker {
+            background-color: yellow;
         }
     </style>
 </head>
 
 
 <body>
+
+    <ul>
+        <li>
+            <button id="gro" onclick="AddGrass()">Ավելացնել 1 խոտ</button>
+        </li>
+        <li>
+            <button id="addgish" onclick="AddGishatich()">Ավելացնել Գիշատիչներ</button>
+        </li>
+        <li>
+            <button id="vo" onclick="AddVorsord()">Ավելացնել Որսորդներ</button>
+        </li>
+        <li>
+            <button id="krcoxcn" onclick="PushKrcox()">Ավելացնել Կրծողներ</button>
+        </li>
+        <li>
+            <button id="change" onclick="ChangeGishatich()">Գիշատչին դարձնել Ոստիկան</button>
+        </li>
+        <li>
+            <button id="krcoxsp" onclick="KillKrcox()">Սպանել Կրծողներին</button>
+        </li>
+        <li>
+            <button id="xotaker" onclick="KillEatGrass()">Սպանել 30 Խոտակերի</button>
+        </li>
+        <li>
+            <button id="earth" onclick="Earth()">Երկրաշարժ</button>
+        </li>
+    </ul>
     <div class="ddrr">
-        <ul>
-            <li>
-                <button id="krcoxcn" onclick="PushKrcox()">Ավելացնել Կրծողներ</button>
-            </li>
-            <li>
-                <button id="krcoxsp" onclick="KillKrcox()">Սպանել Կրծողներ</button>
-            </li>
-            <li>
-                <button id="change" onclick="ChangeGishatich()">Գիշատչին դարձնել Ոստիկան</button>
-            </li>
-            <li>
-                    <button id="addgish" onclick="AddGishatich()">Ավելացնել Գիշատիչներ</button>
-            </li>
-        </ul>
         <table id="legend">
             <tr>
                 <td class="legend-color">Գույն</td>
@@ -117,7 +150,7 @@
             </tr>
 
             <tr>
-                <td class="legend-color" style="background-color:purple"></td>
+                <td class="legend-color" style="background-color:indigo"></td>
                 <td>Որսորդ</td>
                 <td>Մոտակա 24 դատարկ վանդակներով և մոտակա 8 խոտերի վրայով</td>
                 <td>Խոտակերներին և գիշատիչներին, մոտակա 24 վանդակներում</td>
