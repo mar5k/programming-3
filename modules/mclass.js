@@ -88,6 +88,21 @@ module.exports = class LivingCreature {
         }
         return found;
     }
+
+    getDirections_2(t) {
+        this.newDirections_2();
+        let found = [];
+        for (let i in this.directions_2) {
+            let x = this.directions_2[i][0];
+            let y = this.directions_2[i][1];
+            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+                if (matrix[y][x] == t) {
+                    found.push(this.directions_2[i]);
+                }
+            }
+        }
+        return found;
+    }
     die(mname) {
         matrix[this.y][this.x] = 0;
 

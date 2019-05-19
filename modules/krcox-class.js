@@ -1,19 +1,14 @@
 var LivingCreature = require("./mclass.js")
 var random = require("./random")
+
 module.exports = class Krcox extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         this.energy = 1000;
     }
-
-
-    getDirections(t) {
-        this.newDirections_2();
-        return super.getDirections(t);
-    }
     move() {
 
-        let fundCords = this.getDirections(0);
+        let fundCords = this.getDirections_2(0);
         let cord = random(fundCords);
 
         if (cord) {
@@ -29,11 +24,11 @@ module.exports = class Krcox extends LivingCreature {
     }
 
     eat() {
-        let fundCords = this.getDirections(3);
-        let qq = this.getDirections(2);
-        let ball = this.getDirections(1);
-        let basket = this.getDirections(4);
-        let euu = this.getDirections(5);
+        let fundCords = this.getDirections_2(3);
+        let qq = this.getDirections_2(2);
+        let ball = this.getDirections_2(1);
+        let basket = this.getDirections_2(4);
+        let euu = this.getDirections_2(5);
         let cord = random(fundCords);
         let rr = random(qq);
         let drr = random(ball);
@@ -122,7 +117,7 @@ module.exports = class Krcox extends LivingCreature {
             }
         } else {
             this.move();
-            this.energy = this.energy - 3;
+            this.energy -= 3;
         }
         if (this.energy <= 0) {
             this.die(burundukner);
