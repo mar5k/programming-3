@@ -12,7 +12,7 @@ burundukner = [];
 
 let random = require('./modules/random.js');
 function matrixMaker(grassCount, eatGrassCount, gayleriqanak, vq, mil, pnduk) {
-    
+
     for (let i = 0; i < bardzrutyun; i++) {
         matrix.push([]);
         for (let j = 0; j < layn; j++) {
@@ -75,17 +75,17 @@ function matrixMaker(grassCount, eatGrassCount, gayleriqanak, vq, mil, pnduk) {
         }
     }
 }
-matrixMaker(327,181,38,6,4,1);
+matrixMaker(327, 181, 38, 6, 4, 1);
 
 
- var Grass = require('./modules/grass-class');
- var Eatgrass = require('./modules/grasseater-class');
- var Gishatich = require('./modules/gishatich-class');
- var Vorsord = require('./modules/vorsord-class');
- var Krcox = require('./modules/krcox-class');
- var Police = require('./modules/police-class')
+var Grass = require('./modules/grass-class');
+var Eatgrass = require('./modules/grasseater-class');
+var Gishatich = require('./modules/gishatich-class');
+var Vorsord = require('./modules/vorsord-class');
+var Krcox = require('./modules/krcox-class');
+var Police = require('./modules/police-class')
 
- var express = require('express');
+var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -128,6 +128,56 @@ function objmaker() {
     }
 }
 objmaker();
+//Events 
+io.on("connection",function(socket){
+    socket.on("pushkrcox", function(){
+        var n = 0;
+        while(n < 2){
+            let x = Math.floor(random(layn));
+            let y = Math.floor(random(bardzrutyun));
+            if(matrix[y][x] == 0){
+                matrix[y][x] = 6;
+                var krc = new Krcox(x,y);
+                burundukner.push(krc);
+                n++;
+            }  
+        }
+    })
+    socket.on("killkrcox",function(){
+        burundukner = [];
+        for(var y = 0; y < bardzrutyun; y++){
+            for(var x = 0; x < layn; x++){
+                if(matrix[y][x] == 6)
+                    matrix[y][x] = 0;
+            }
+        }
+    })
+    socket.on("change",function(){
+        vohmak = [];
+        for(var y = 0; y < bardzrutyun; y++){
+            for(var x = 0; x < layn; x++){
+                if(matrix[y][x] == 3){
+                    matrix[y][x] = 5;
+                    var polo = new Police(x,y);
+                    legal.push(polo);
+                }
+            }
+        }
+    })
+    socket.on("addg", function(){
+        var n = 0;
+        while(n < 13){
+            let x = Math.floor(random(layn));
+            let y = Math.floor(random(bardzrutyun));
+            if(matrix[y][x] == 0){
+                matrix[y][x] = 3;
+                var g = new Gishatich(x,y);
+                vohmak.push(g);
+                n++;
+            }  
+        }
+    })
+});
 
 function game() {
     for (let i in xotArr) {
@@ -154,11 +204,11 @@ function game() {
     }
 
     let sendData = {
-        matrix:matrix
+        matrix: matrix
     }
 
     io.sockets.emit("data", sendData);
 
 }
 
-setInterval(game, 500);
+setInterval(game, 300);

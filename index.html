@@ -27,12 +27,47 @@
             font-size: 14px;
             padding-left: 50px;
         }
+
+        button {
+            border-radius: 10px;
+            padding: 10px 15px;
+            border: none;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        #krcoxcn {
+            background-color: whitesmoke;
+        }
+
+        #krcoxsp {
+            color: black;
+        }
+
+        #vorsord {
+            background-color: teal;
+        }
     </style>
 </head>
 
 
 <body>
     <div class="ddrr">
+        <ul>
+            <li>
+                <button id="krcoxcn" onclick="PushKrcox()">Ավելացնել Կրծողներ</button>
+            </li>
+            <li>
+                <button id="krcoxsp" onclick="KillKrcox()">Սպանել Կրծողներ</button>
+            </li>
+            <li>
+                <button id="change" onclick="ChangeGishatich()">Գիշատչին դարձնել Ոստիկան</button>
+            </li>
+            <li>
+                    <button id="addgish" onclick="AddGishatich()">Ավելացնել Գիշատիչներ</button>
+            </li>
+        </ul>
         <table id="legend">
             <tr>
                 <td class="legend-color">Գույն</td>

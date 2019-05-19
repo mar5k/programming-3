@@ -12,9 +12,9 @@ function setup() {
     background("gray");
 }
 
-   socket.on("data", drawMatrix);
+socket.on("data", drawMatrix);
 
- 
+
 function drawMatrix(data) {
     matrix = data.matrix;
     background("gray");
@@ -38,4 +38,18 @@ function drawMatrix(data) {
             rect(j * side, i * side, side, side);
         }
     }
+}
+
+
+function PushKrcox(){
+    socket.emit("pushkrcox");
+}
+function KillKrcox(){
+    socket.emit("killkrcox");
+}
+function ChangeGishatich(){
+    socket.emit("change");
+}
+function AddGishatich(){
+    socket.emit("addg");
 }
