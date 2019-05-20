@@ -24,7 +24,7 @@ module.exports =class Eatgrass extends LivingCreature{
         }
     }
 
-    eat() {
+    eat(tex) {
         let fundCords = this.getDirections(1);
         let cord = random(fundCords);
 
@@ -48,7 +48,7 @@ module.exports =class Eatgrass extends LivingCreature{
                 }
             }
 
-            if (this.multiply >= 9) {
+            if (this.multiply >= tex) {
                 this.mul()
                 this.multiply = 0;
             }

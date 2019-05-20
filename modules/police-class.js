@@ -35,7 +35,7 @@ module.exports =class Police extends LivingCreature{
 
             this.x = x;
             this.y = y;
-
+ 
         } else if (k3) {
             let x = k3[0];
             let y = k3[1];

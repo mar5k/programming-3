@@ -98,7 +98,7 @@ app.get('/', function (req, res) {
 });
 
 server.listen(3000, () => {
-    console.log('running')
+    console.log('Running on port 3000')
 });
 
 
@@ -128,7 +128,9 @@ function objmaker() {
     }
 }
 objmaker();
+
 //Events 
+
 io.on("connection", function (socket) {
     socket.on("pushkrcox", function () {
         var n = 0;
@@ -266,10 +268,10 @@ io.on("connection", function (socket) {
         for (var y = 0; y < bardzrutyun; y++) {
             for (var x = 0; x < layn; x++) {
                 if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                    if (matrix[y][x] == 2 && eatArr.length > 30) {
+                    if (matrix[y][x] == 2 && eatArr.length > 20) {
                         for (var i in eatArr) {
                             if (x == eatArr[i].x && y == eatArr[i].y) {
-                                eatArr.splice(i, 30);
+                                eatArr.splice(i, 20);
                                 break;
                             }
                         }
@@ -280,19 +282,55 @@ io.on("connection", function (socket) {
         }
     })
 });
+var changeseason = 0;
+var season;
 
 function game() {
-    for (let i in xotArr) {
-        xotArr[i].mul();
+
+    changeseason++;
+
+    if (changeseason < 20) {
+        season = "summer";
     }
-    for (let i in eatArr) {
-        eatArr[i].eat();
+    else if (changeseason >= 20 && changeseason <= 40) {
+        season = "winter";
     }
-    for (let i in vohmak) {
-        vohmak[i].eat();
+    else {
+        changeseason = 0;
+
     }
-    for (let i in xumb) {
-        xumb[i].eat();
+
+    if (xotArr[0] !== undefined) {
+        for (var i in xotArr) {
+            if (season === "summer") {
+                xotArr[i].mul(3);
+            }
+            else if (season === "winter") {
+                xotArr[i].mul(10);
+            }
+        }
+    }
+
+    if (eatArr[0] !== undefined) {
+        for (var i in eatArr) {
+            if (season === "summer") {
+                eatArr[i].eat(7);
+            }
+            else if (season === "winter") {
+                eatArr[i].eat(18);
+            }
+        }
+    }
+
+    if (vohmak.length > 0) {
+        for (let i in vohmak) {
+            vohmak[i].eat(5);
+        }
+    }
+    if (xumb.length > 0) {
+        for (let i in xumb) {
+            xumb[i].eat(17);
+        }
     }
     if (legal.length > 0) {
         for (let i in legal) {
@@ -306,11 +344,12 @@ function game() {
     }
 
     let sendData = {
-        matrix: matrix
+        matrix: matrix,
+        sendseason: season
     }
 
     io.sockets.emit("data", sendData);
 
 }
 
-setInterval(game, 300);
+setInterval(game, 500);

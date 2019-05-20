@@ -16,25 +16,56 @@ socket.on("data", drawMatrix);
 
 
 function drawMatrix(data) {
-    matrix = data.matrix;
     background("gray");
+
+    matrix = data.matrix;
+    getseason = data.sendseason;
+
     for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
-            if (matrix[i][j] == 1) {
-                fill("green");
-            } else if (matrix[i][j] == 2) {
-                fill("yellow");
-            } else if (matrix[i][j] == 0) {
+
+            if (matrix[i][j] == 0) {
                 fill("gray");
-            } else if (matrix[i][j] == 3) {
-                fill("red");
-            } else if (matrix[i][j] == 4) {
+            }
+            else if (matrix[i][j] == 1) {
+                if (getseason == "summer") {
+                    fill("green");
+                }
+                else if (getseason == "winter") {
+                    fill("whitesmoke");
+                }
+            }
+            else if (matrix[i][j] == 2) {
+                if (getseason == "summer") {
+                    fill("yellow");
+                }
+                else if (getseason == "winter") {
+                    fill("orange");
+                }
+            }
+            else if (matrix[i][j] == 3) {
+                if (getseason == "summer") {
+                    fill("red");
+                }
+                else if (getseason == "winter") {
+                    fill("brown");
+                }
+            }
+            else if (matrix[i][j] == 4) {
                 fill("indigo");
-            } else if (matrix[i][j] == 5) {
-                fill("blue");
-            } else if (matrix[i][j] == 6) {
+            }
+            else if (matrix[i][j] == 5) {
+                if (getseason == "summer") {
+                    fill("blue");
+                }
+                else if (getseason == "winter") {
+                    fill("teal");
+                }
+            }
+            else if (matrix[i][j] == 6) {
                 fill("black");
-            } else if (matrix[i][j] == 7) {
+            }
+            else if (matrix[i][j] == 7) {
                 fill("brown");
             }
             rect(j * side, i * side, side, side);

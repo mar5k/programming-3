@@ -2,9 +2,9 @@
  var random = require("./random")
 module.exports = class Grass extends LivingCreature{
 
- mul() {
+ mul(impo) {
         this.multiply++;
-        if (this.multiply >= 5) {
+        if (this.multiply >= impo) {
             let fundCords = this.getDirections(0);
             let cr = random(fundCords);
             if (cr) {

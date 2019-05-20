@@ -2,10 +2,12 @@ var LivingCreature = require("./mclass.js")
 var random = require("./random")
 
 module.exports = class Krcox extends LivingCreature {
+
     constructor(x, y) {
         super(x, y);
         this.energy = 1000;
     }
+    
     move() {
 
         let fundCords = this.getDirections_2(0);

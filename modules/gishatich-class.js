@@ -8,7 +8,7 @@ module.exports =class Gishatich extends LivingCreature{
         this.energy = 121;
     }
 
-    eat() {
+    eat(re) {
         let fundCords = this.getDirections(2);
         let cord = random(fundCords);
 
@@ -31,13 +31,13 @@ module.exports =class Gishatich extends LivingCreature{
                 }
             }
 
-            if (this.multiply >= 5) {
+            if (this.multiply >= re) {
                 this.mul()
                 this.multiply = 0;
             }
         } else {
             this.move();
-            this.energy = this.energy - 2;
+            this.energy -= 2;
             if (this.energy <= 0) {
                 this.die(vohmak);
             }

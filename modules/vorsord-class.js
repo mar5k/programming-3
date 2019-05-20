@@ -3,6 +3,7 @@ var LivingCreature = require("./mclass.js")
 var random = require("./random")
 
 module.exports = class Vorsord extends LivingCreature{
+    
     move() {    
 
         let fundCords = this.getDirections_1(0);
@@ -46,7 +47,7 @@ module.exports = class Vorsord extends LivingCreature{
             matrix[y][x] = 4;
         }
     }
-    eat() {
+    eat(base) {
         let fundCords = this.getDirections_1(3);
         let qq = this.getDirections_1(2);
         let cord = random(fundCords);
@@ -85,7 +86,7 @@ module.exports = class Vorsord extends LivingCreature{
                 }
             }
         } 
-        if (this.multiply >= 18) {
+        if (this.multiply >= base) {
             this.mul();
             this.multiply = 0;
         } else {
