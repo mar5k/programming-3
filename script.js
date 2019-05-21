@@ -1,14 +1,14 @@
 var socket = io();
 
-let side = 25;
-let bardzrutyun = 38;
-let layn = 80;
-let matrix = [];
+var side = 25;
+var bardzr = 36;
+var layn = 108;
+var matrix = [];
 
 function setup() {
     noStroke();
     frameRate(5);
-    createCanvas(layn * side, bardzrutyun * side);
+    createCanvas(layn * side, bardzr * side);
     background("gray");
 }
 
@@ -21,8 +21,8 @@ function drawMatrix(data) {
     matrix = data.matrix;
     getseason = data.sendseason;
 
-    for (let i = 0; i < matrix.length; i++) {
-        for (let j = 0; j < matrix[i].length; j++) {
+    for (var i = 0; i < matrix.length; i++) {
+        for (var j = 0; j < matrix[i].length; j++) {
 
             if (matrix[i][j] == 0) {
                 fill("gray");
@@ -86,7 +86,7 @@ function ChangeGishatich() {
 function AddGishatich() {
     socket.emit("addg");
 }
-function Earth() {
+function Earthquake() {
     socket.emit("earth");
 }
 function AddVorsord() {
@@ -95,6 +95,6 @@ function AddVorsord() {
 function AddGrass() {
     socket.emit("gro");
 }
-function KillEatGrass() {
-    socket.emit("kill");
+function AddGrassEater() {
+    socket.emit("xotaker");
 }

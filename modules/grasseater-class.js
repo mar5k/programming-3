@@ -1,6 +1,6 @@
 var LivingCreature = require("./mclass.js")
 var random = require("./random")
-
+ 
 module.exports =class Eatgrass extends LivingCreature{
     constructor(x,y) {
         super(x,y);
@@ -9,12 +9,12 @@ module.exports =class Eatgrass extends LivingCreature{
 
     move() {
 
-        let fundCords = this.getDirections(0);
-        let cord = random(fundCords);
+        var fundCords = this.getDirections(0);
+        var cord = random(fundCords);
 
         if (cord) {
-            let x = cord[0];
-            let y = cord[1];
+            var x = cord[0];
+            var y = cord[1];
 
             matrix[y][x] = 2;
             matrix[this.y][this.x] = 0;
@@ -25,12 +25,12 @@ module.exports =class Eatgrass extends LivingCreature{
     }
 
     eat(tex) {
-        let fundCords = this.getDirections(1);
-        let cord = random(fundCords);
+        var fundCords = this.getDirections(1);
+        var cord = random(fundCords);
 
         if (cord) {
-            let x = cord[0];
-            let y = cord[1];
+            var x = cord[0];
+            var y = cord[1];
 
             matrix[y][x] = 2;
             matrix[this.y][this.x] = 0;
@@ -42,7 +42,7 @@ module.exports =class Eatgrass extends LivingCreature{
 
             this.energy++;
 
-            for (let i in xotArr) {
+            for (var i in xotArr) {
                 if (x == xotArr[i].x && y == xotArr[i].y) {
                     xotArr.splice(i, 1);
                 }
@@ -57,21 +57,23 @@ module.exports =class Eatgrass extends LivingCreature{
         } else {
             this.move();
             this.energy--;
+
             if (this.energy <= 0) {
+                
                 this.die(eatArr);
             }
         }
     }
 
     mul() {
-        let fundCords = this.getDirections(0);
-        let cord = random(fundCords);
+        var fundCords = this.getDirections(0);
+        var cord = random(fundCords);
 
         if (cord) {
-            let x = cord[0];
-            let y = cord[1];
+            var x = cord[0];
+            var y = cord[1];
 
-            let norXotaker = new Eatgrass(x, y);
+            var norXotaker = new Eatgrass(x, y);
             eatArr.push(norXotaker);
 
             matrix[y][x] = 2;

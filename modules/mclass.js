@@ -77,10 +77,10 @@ module.exports = class LivingCreature {
 
     getDirections_1(t) {
         this.newDirections_1();
-        let found = [];
-        for (let i in this.directions_1) {
-            let x = this.directions_1[i][0];
-            let y = this.directions_1[i][1];
+        var found = [];
+        for (var i in this.directions_1) {
+            var x = this.directions_1[i][0];
+            var y = this.directions_1[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
                 if (matrix[y][x] == t) {
                     found.push(this.directions_1[i]);
@@ -92,10 +92,10 @@ module.exports = class LivingCreature {
 
     getDirections_2(t) {
         this.newDirections_2();
-        let found = [];
-        for (let i in this.directions_2) {
-            let x = this.directions_2[i][0];
-            let y = this.directions_2[i][1];
+        var found = [];
+        for (var i in this.directions_2) {
+            var x = this.directions_2[i][0];
+            var y = this.directions_2[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
                 if (matrix[y][x] == t) {
                     found.push(this.directions_2[i]);
@@ -107,7 +107,7 @@ module.exports = class LivingCreature {
     die(mname) {
         matrix[this.y][this.x] = 0;
 
-        for (let i in mname) {
+        for (var i in mname) {
             if (this.x == mname[i].x && this.y == mname[i].y) {
                 mname.splice(i, 1);
                 break;

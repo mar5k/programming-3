@@ -2,27 +2,29 @@ var LivingCreature = require("./mclass.js")
 
 var random = require("./random")
 
-module.exports = class Vorsord extends LivingCreature{
-    
-    move() {    
+module.exports = class Vorsord extends LivingCreature {
 
-        let fundCords = this.getDirections_1(0);
-        let ff = this.getDirections(1);
-        let cord = random(fundCords);
-        let kt = random(ff);
+    move() {
+
+        var fundCords = this.getDirections_1(0);
+        var ff = this.getDirections(1);
+        var cord = random(fundCords);
+        var kt = random(ff);
 
         if (cord) {
-            let x = cord[0];
-            let y = cord[1];
+            var x = cord[0];
+            var y = cord[1];
 
             matrix[y][x] = 4;
             matrix[this.y][this.x] = 0;
 
             this.x = x;
             this.y = y;
+
         } else if (kt) {
-            let x = kt[0];
-            let y = kt[1];
+
+            var x = kt[0];
+            var y = kt[1];
 
             matrix[y][x] = 4;
             matrix[this.y][this.x] = 1;
@@ -31,31 +33,32 @@ module.exports = class Vorsord extends LivingCreature{
             this.y = y;
 
         }
-
     }
+
     mul() {
-        let fundCords = this.getDirections(0);
-        let cord = random(fundCords);
+
+        var fundCords = this.getDirections(0);
+        var cord = random(fundCords);
 
         if (cord) {
-            let x = cord[0];
-            let y = cord[1];
+            var x = cord[0];
+            var y = cord[1];
 
-            let norvors = new Vorsord(x, y);
-            xumb.push(norvors);
+            var norvors = new Vorsord(x, y);
+            vorsArr.push(norvors);
 
             matrix[y][x] = 4;
         }
     }
     eat(base) {
-        let fundCords = this.getDirections_1(3);
-        let qq = this.getDirections_1(2);
-        let cord = random(fundCords);
-        let rr = random(qq);
+        var fundCords = this.getDirections_1(3);
+        var qq = this.getDirections_1(2);
+        var cord = random(fundCords);
+        var rr = random(qq);
 
         if (cord) {
-            let x = cord[0];
-            let y = cord[1];
+            var x = cord[0];
+            var y = cord[1];
 
             matrix[y][x] = 4;
             matrix[this.y][this.x] = 0;
@@ -64,14 +67,14 @@ module.exports = class Vorsord extends LivingCreature{
             this.y = y;
             this.multiply++;
 
-            for (let j in vohmak) {
-                if (x == vohmak[j].x && y == vohmak[j].y) {
-                    vohmak.splice(j, 1);
+            for (var j in gishArr) {
+                if (x == gishArr[j].x && y == gishArr[j].y) {
+                    gishArr.splice(j, 1);
                 }
             }
         } else if (rr) {
-            let x = rr[0];
-            let y = rr[1];
+            var x = rr[0];
+            var y = rr[1];
 
             matrix[y][x] = 4;
             matrix[this.y][this.x] = 0;
@@ -80,12 +83,12 @@ module.exports = class Vorsord extends LivingCreature{
             this.y = y;
             this.multiply++;
 
-            for (let j in eatArr) {
+            for (var j in eatArr) {
                 if (x == eatArr[j].x && y == eatArr[j].y) {
                     eatArr.splice(j, 1);
                 }
             }
-        } 
+        }
         if (this.multiply >= base) {
             this.mul();
             this.multiply = 0;

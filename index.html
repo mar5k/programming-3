@@ -2,73 +2,13 @@
 
 <head>
     <meta charset="utf8">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-    <style>
-        div {
-            display: flex;
-        }
 
-        #legend {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 1200px;
-        }
-
-        .legend-color {
-            width: 30px;
-            height: 30px;
-        }
-
-        td {
-            border: 1px solid black;
-            font-size: 14px;
-            padding-left: 50px;
-        }
-
-        button {
-            border-radius: 10px;
-            padding: 15px 20px;
-            border: none;
-            text-align: center;
-            text-decoration: none;
-            font-size: 21px;
-        }
-
-        #krcoxcn {
-            background-color: whitesmoke;
-        }
-
-        #krcoxsp {
-            background-color: rgb(100, 95, 95);
-        }
-
-        #change {
-            background-color: teal;
-        }
-
-        #earth {
-            background-color: rgb(165, 93, 26);
-        }
-
-        #gro {
-            background-color: green;
-        }
-
-        #vo {
-            background-color: indigo;
-        }
-
-        #addgish {
-            background-color: red;
-        }
-
-        #xotaker {
-            background-color: yellow;
-        }
-    </style>
 </head>
 
 
@@ -88,19 +28,21 @@
             <button id="krcoxcn" onclick="PushKrcox()">Ավելացնել Կրծողներ</button>
         </li>
         <li>
-            <button id="change" onclick="ChangeGishatich()">Գիշատչին դարձնել Ոստիկան</button>
+            <button class="eatxot" onclick="AddGrassEater()">Ավելացնել Խոտակերներ</button>
         </li>
         <li>
-            <button id="krcoxsp" onclick="KillKrcox()">Սպանել Կրծողներին</button>
+            <button id="change" onclick="ChangeGishatich()">Գիշատիչներին դարձնել Ոստիկաններ</button>
         </li>
         <li>
-            <button id="xotaker" onclick="KillEatGrass()">Սպանել 20 Խոտակերի</button>
+            <button class="krcoxsp" onclick="KillKrcox()">Սպանել Կրծողներին</button>
         </li>
         <li>
-            <button id="earth" onclick="Earth()">Երկրաշարժ</button>
+            <button id="earth" onclick="Earthquake()">Երկրաշարժ</button>
         </li>
+
     </ul>
-    <div class="ddrr">
+    
+    <div>
         <table id="legend">
             <tr>
                 <td class="legend-color">Գույն</td>
@@ -171,7 +113,7 @@
                 <td>Մոտակա 4 անկյունագծերի դատարկ վանդակների վրայով, էներգիան քչանում է 3֊ով</td>
                 <td>Ուտում է ամեն ինչ, ուտելիս էներգիան ավելանում է 1֊ով</td>
                 <td></td>
-                <td>Սատկում է, երբ էներգիան փոքր է 0֊ից</td>
+                <td></td>
             </tr>
         </table>
     </div>

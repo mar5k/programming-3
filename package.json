@@ -1,7 +1,7 @@
 {
   "name": "final",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a final project of workshop of programming third level.",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
