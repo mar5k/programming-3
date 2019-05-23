@@ -93,6 +93,7 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var fs = require('fs');
 
 
 app.use(express.static("."));
@@ -373,3 +374,17 @@ function game() {
 }
 
 setInterval(game, 650);
+
+
+var myObjStatic = {    };
+
+setInterval(function(){
+    myObjStatic.xArr = xotArr.length;
+    myObjStatic.eArr = eatArr.length;
+    myObjStatic.gArr = gishArr.length;
+    myObjStatic.vArr = vorsArr.length;
+    myObjStatic.pArr = polArr.length;
+    myObjStatic.kArr = krcArr.length;
+
+    fs.writeFileSync("statistics.json", JSON.stringify(myObjStatic));
+}, 50);
